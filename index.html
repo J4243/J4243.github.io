@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIAJES - Prototipo Interactivo</title>
+  <!-- Iconos de FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fuentes de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Overlay oscuro para cerrar el menú en móviles -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar / Menú Lateral -->
+  <aside class="sidebar" id="sidebar">
+    <div class="top-icons">
+      <!-- Botón tipo hamburguesa -->
+      <button class="icon-btn" id="hamburgerBtn" aria-label="Abrir/Cerrar menú">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <button class="icon-btn" id="userBtn" aria-label="Perfil de usuario">
+        <i class="fa-solid fa-user"></i>
+      </button>
+    </div>
+
+    <nav class="nav-menu">
+      <a href="#" class="nav-btn active" data-target="home-section">Tienda</a>
+      <a href="#" class="nav-btn" data-target="lugares-section">Lugares</a>
+      <a href="#" class="nav-btn" data-target="contactos-section">Contactos</a>
+      <a href="#" class="nav-btn" data-target="ofertas-section">Ofertas</a>
+    </nav>
+  </aside>
+
+  <!-- Contenido Principal -->
+  <main class="main-content">
+    
+    <!-- Encabezado -->
+    <header class="header">
+      <h1 class="logo-title">VIAJES</h1>
+    </header>
+
+    <!-- Sección Principal (Inicio / Tienda) -->
+    <div id="home-section" class="view-section active">
+      
+      <!-- Banner Principal -->
+      <section class="banner">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80" alt="Paisaje de montañas con nubes">
+        <div class="banner-overlay">
+          <h2>Viaja con Nosotros</h2>
+        </div>
+      </section>
+
+      <!-- Galería de Tarjetas Superpuestas Interactivas -->
+      <section class="cards-overlap-section">
+        <div class="image-card card-back" id="cardBack">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Lago y montañas">
+        </div>
+        <div class="image-card card-front" id="cardFront">
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Bosque y lago reflexivo">
+        </div>
+      </section>
+
+      <!-- Tarjetas de Arriendo / Agendado con Interacción -->
+      <section class="cards-carousel">
+        <div class="rental-card partial-card"></div>
+
+        <!-- Tarjeta Principal de Hospedaje -->
+        <div class="rental-card active-card">
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=800&q=80" alt="Cabaña en el bosque">
+          </div>
+          <div class="card-info">
+            <h3>Arrienda tu hospedaje</h3>
+            <p class="date" id="currentDate">Hoy. 24 Ago 2026</p>
+            <p class="time" id="currentTime">00:15 AM</p>
+            
+            <button class="status-badge booked" id="actionBtn">
+              <div class="check-icon" id="actionIcon">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <span id="actionText">Viaje Agendado!</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Secciones Dinámicas -->
+    <div id="lugares-section" class="view-section">
+      <div class="placeholder-card">
+        <h2>Lugares Destacados</h2>
+        <p>Explora destinos increíbles en las montañas, playas y bosques más espectaculares.</p>
+        <button class="back-btn" onclick="navigateTo('home-section')">Volver al Inicio</button>
+      </div>
+    </div>
+
+    <div id="contactos-section" class="view-section">
+      <div class="placeholder-card">
+        <h2>Atención a Contactos</h2>
+        <p>¿Tienes dudas? Escríbenos a soporte@viajes.com o llámanos al +56 9 1234 5678.</p>
+        <button class="back-btn" onclick="navigateTo('home-section')">Volver al Inicio</button>
+      </div>
+    </div>
+
+    <div id="ofertas-section" class="view-section">
+      <div class="placeholder-card">
+        <h2>Ofertas Especiales</h2>
+        <p>Aprovecha un 30% de descuento en alquiler de cabañas durante esta temporada.</p>
+        <button class="back-btn" onclick="navigateTo('home-section')">Volver al Inicio</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal para ver imágenes de cerca -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="close-modal" id="closeModal">&times;</button>
+      <img id="modalImg" src="" alt="Vista previa">
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
